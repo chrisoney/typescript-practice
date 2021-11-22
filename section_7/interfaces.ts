@@ -14,10 +14,10 @@ const oldCivic = {
   }
 };
 
-const printVehicle = (vehicle: Reportable): void => {
-  console.log(vehicle.summary())
-  console.log(`Year: ${vehicle.year}`);
-  console.log(`Broken? ${vehicle.broken ? 'yes' : 'no'}`);
+const printItemSummary = (item: Reportable): void => {
+  console.log(item.summary())
+  console.log(`Year: ${item.year}`);
+  console.log(`Broken? ${item.broken ? 'yes' : 'no'}`);
 }
 
-printVehicle(oldCivic)
+printItemSummary(oldCivic)
