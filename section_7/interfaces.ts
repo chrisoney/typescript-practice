@@ -1,7 +1,4 @@
 interface Reportable {
-  name: string;
-  year: Date;
-  broken: boolean;
   summary(): string
 };
 
@@ -14,10 +11,17 @@ const oldCivic = {
   }
 };
 
-const printItemSummary = (item: Reportable): void => {
-  console.log(item.summary())
-  console.log(`Year: ${item.year}`);
-  console.log(`Broken? ${item.broken ? 'yes' : 'no'}`);
+const drink = {
+  color: 'brown',
+  carbonated: true,
+  sugar: 40,
+  summary(): string {
+    return `My drink has ${this.sugar}g of sugar.`;
+  }
 }
 
-printItemSummary(oldCivic)
+const printItemSummary = (item: Reportable): void => {
+  console.log(item.summary());
+}
+
+printItemSummary(drink)
