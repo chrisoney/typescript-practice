@@ -1,6 +1,6 @@
 import faker from 'faker';
 
-class User {
+export class User {
   name: string;
   location: {
     lat: number;
@@ -16,5 +16,3 @@ class User {
     // this.location.lng = parseFloat(faker.address.longitude())
   }
 };
-
-export default User;
