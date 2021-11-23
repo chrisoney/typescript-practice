@@ -1,15 +1,17 @@
 class Vehicle {
-  drive(): void {
-    console.log('chugga chugga');
-  }
+  color: string = 'red';
   honk(): void {
     console.log('beep');
   }
 };
+const vehicle = new Vehicle();
 
 class Car extends Vehicle {
-
+  private drive(): void {
+    console.log('vroom')
+  }
 }
 
-const vehicle = new Car();
+const car = new Car();
+
 vehicle.honk();
