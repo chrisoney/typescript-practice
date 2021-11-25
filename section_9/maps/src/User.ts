@@ -12,7 +12,8 @@ export class User {
       lat: parseFloat(faker.address.latitude()),
       lng: parseFloat(faker.address.longitude())
     }
-    // this.location.lat = parseFloat(faker.address.latitude())
-    // this.location.lng = parseFloat(faker.address.longitude())
+  }
+  markerContent(): string {
+    return `Username: ${this.name}`;
   }
 };
