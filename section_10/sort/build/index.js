@@ -1,23 +1,12 @@
 "use strict";
-var Sorter = /** @class */ (function () {
-    function Sorter(collection) {
-        this.collection = collection;
-    }
-    Sorter.prototype.sort = function () {
-        var length = this.collection.length;
-        for (var i = 0; i < length; i++) {
-            for (var j = 0; j < length - i - 1; j++) {
-                if (this.collection[j] > this.collection[j + 1]) {
-                    var temp = this.collection[j];
-                    this.collection[j] = this.collection[j + 1];
-                    this.collection[j + 1] = temp;
-                }
-            }
-        }
-    };
-    return Sorter;
-}());
-var sorter = new Sorter([10, 3, -5, 0]);
-console.log('Before sorting: ', sorter.collection);
-sorter.sort();
-console.log('After sorting: ', sorter.collection);
+Object.defineProperty(exports, "__esModule", { value: true });
+// const numbersCollection = new NumbersCollection([10, 3, -5, 0]);
+// const sorter = new Sorter(numbersCollection);
+// console.log('Before sorting: ', sorter.collection)
+// sorter.sort()
+// console.log('After sorting: ', sorter.collection)
+// const charactersCollection = new CharactersCollection('XaaAyb');
+// const sorter2 = new Sorter(charactersCollection);
+// console.log('Before sorting: ', sorter2.collection)
+// sorter2.sort()
+// console.log('After sorting: ', sorter2.collection)
