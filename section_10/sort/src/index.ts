@@ -1,6 +1,7 @@
 class Sorter {
   constructor(public collection: number[]) { }
   
+  // Bubble sort? Look up later
   sort(): void {
     const { length } = this.collection;
     for (let i = 0; i < length; i++){
