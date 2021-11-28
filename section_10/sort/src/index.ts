@@ -1,13 +1,11 @@
-// import { NumbersCollection } from "./NumbersCollection";
-// import { CharactersCollection } from "./CharactersCollection";
-// import { Sorter } from "./Sorter";
-// import { LinkedList } from "./LinkedList";
+import { NumbersCollection } from "./NumbersCollection";
+import { CharactersCollection } from "./CharactersCollection";
+import { LinkedList } from "./LinkedList";
 
-// const numbersCollection = new NumbersCollection([10, 3, -5, 0]);
-// const sorter = new Sorter(numbersCollection);
-// console.log('Before sorting: ', sorter.collection)
-// sorter.sort()
-// console.log('After sorting: ', sorter.collection)
+const numbersCollection = new NumbersCollection([10, 3, -5, 0]);
+console.log('Before sorting: ', numbersCollection.data)
+numbersCollection.sort()
+console.log('After sorting: ', numbersCollection.data)
 
 // const charactersCollection = new CharactersCollection('XaaAyb');
 // const sorter2 = new Sorter(charactersCollection);
