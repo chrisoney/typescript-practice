@@ -1,7 +1,7 @@
-import { NumbersCollection } from "./NumbersCollection";
-import { CharactersCollection } from "./CharactersCollection";
-import { Sorter } from "./Sorter";
-import { LinkedList } from "./LinkedList";
+// import { NumbersCollection } from "./NumbersCollection";
+// import { CharactersCollection } from "./CharactersCollection";
+// import { Sorter } from "./Sorter";
+// import { LinkedList } from "./LinkedList";
 
 // const numbersCollection = new NumbersCollection([10, 3, -5, 0]);
 // const sorter = new Sorter(numbersCollection);
@@ -15,15 +15,15 @@ import { LinkedList } from "./LinkedList";
 // sorter2.sort()
 // console.log('After sorting: ', sorter2.collection)
 
-const linkedList = new LinkedList();
-linkedList.add(500);
-linkedList.add(-10);
-linkedList.add(-3);
-linkedList.add(4);
+// const linkedList = new LinkedList();
+// linkedList.add(500);
+// linkedList.add(-10);
+// linkedList.add(-3);
+// linkedList.add(4);
 
-const sorter3 = new Sorter(linkedList);
-console.log('Before sorting: ')
-linkedList.print()
-sorter3.sort()
-console.log('After sorting: ')
-linkedList.print()
+// const sorter3 = new Sorter(linkedList);
+// console.log('Before sorting: ')
+// linkedList.print()
+// sorter3.sort()
+// console.log('After sorting: ')
+// linkedList.print()
