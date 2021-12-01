@@ -1,29 +1,34 @@
 interface UserProps { 
-    name?: string; 
-    age?: number;
+  name?: string; 
+  age?: number;
 }
 
 type Callback = () => void;
 
 export class User {
-    events: { [key:string]: Callback[] } = {};
+  events: { [key:string]: Callback[] } = {};
 
-    constructor(private data: UserProps) {}
+  constructor(private data: UserProps) {}
 
-    get(propName: string): (string | number) {
-        return this.data[propName];
-    }
+  get(propName: string): (string | number) {
+    return this.data[propName];
+  }
 
-    set(update: UserProps): void {
-        Object.assign(this.data, update);
-    }
+  set(update: UserProps): void {
+    Object.assign(this.data, update);
+  }
 
-    on(eventName: string, callback: Callback): void {
-        if (!this.events[eventName]) this.events[eventName] = [];
-        this.events[eventName].push(callback);
-    }
+  on(eventName: string, callback: Callback): void {
+    if (!this.events[eventName]) this.events[eventName] = [];
+    this.events[eventName].push(callback);
+  }
 
-    trigger(eventName: string): void {
+  trigger(eventName: string): void {
+    const handlers = this.events[eventName];
+    if(!handlers || handlers.length === 0) return;
 
-    }
+    handlers.forEach(callback => {
+      callback()
+    });
+  }
 }
