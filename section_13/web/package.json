@@ -1,5 +1,14 @@
 {
   "devDependencies": {
     "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "concurrently": "^6.4.0"
+  },
+  "scripts": {
+    "start:db": "json-server -w db.json",
+    "start:parcel": "parcel index.html",
+    "start": "concurrently npm:start:*"
   }
 }
