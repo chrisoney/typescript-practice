@@ -117,48 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"src/models/User.ts":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.User = void 0;
-
-var User =
-/** @class */
-function () {
-  function User(data) {
-    this.data = data;
-    this.events = {};
-  }
-
-  User.prototype.get = function (propName) {
-    return this.data[propName];
-  };
-
-  User.prototype.set = function (update) {
-    Object.assign(this.data, update);
-  };
-
-  User.prototype.on = function (eventName, callback) {
-    if (!this.events[eventName]) this.events[eventName] = [];
-    this.events[eventName].push(callback);
-  };
-
-  User.prototype.trigger = function (eventName) {
-    var handlers = this.events[eventName];
-    if (!handlers || handlers.length === 0) return;
-    handlers.forEach(function (callback) {
-      callback();
-    });
-  };
-
-  return User;
-}();
-
-exports.User = User;
-},{}],"node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
+})({"node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
 'use strict';
 
 module.exports = function bind(fn, thisArg) {
@@ -2410,34 +2369,28 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var User_1 = require("./models/User");
+var axios_1 = __importDefault(require("axios")); // const user = new User({name: 'Chris', age: 30});
+// user.on('change', () => {
+//   console.log('boo!')
+// });
+// user.on('change', () => {
+//   console.log('ahhhh!')
+// });
+// user.trigger('change');
 
-var axios_1 = __importDefault(require("axios"));
-
-var user = new User_1.User({
-  name: 'Chris',
-  age: 30
-});
-user.on('change', function () {
-  console.log('boo!');
-});
-user.on('change', function () {
-  console.log('ahhhh!');
-}); // user.trigger('change');
 
 (function () {
   return __awaiter(void 0, void 0, void 0, function () {
-    var temp;
     return __generator(this, function (_a) {
       switch (_a.label) {
         case 0:
           return [4
           /*yield*/
-          , axios_1.default.get('localhost:3000/users')];
+          , axios_1.default.get('http://localhost:3000/users/1')];
 
         case 1:
-          temp = _a.sent();
-          console.log(temp);
+          _a.sent();
+
           return [2
           /*return*/
           ];
@@ -2445,7 +2398,7 @@ user.on('change', function () {
     });
   });
 })();
-},{"./models/User":"src/models/User.ts","axios":"node_modules/axios/index.js"}],"../../../../.nvm/versions/node/v12.22.7/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"axios":"node_modules/axios/index.js"}],"../../../../.nvm/versions/node/v12.22.7/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -2473,7 +2426,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63671" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64720" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
