@@ -1,14 +1,11 @@
 import { User } from "./models/User";
 
-const user = new User({ name: "New Record", age: 0 });
-
-console.log(user.get('name'));
-
+const user = new User({ id: 1 });
 user.on('change', () => {
-  console.log('user was changed');
+  console.log(user)
 })
 
-user.trigger('change')
+user.fetch();
 
 // A quick reminder on accessors
 

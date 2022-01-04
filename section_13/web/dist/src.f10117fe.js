@@ -2364,6 +2364,22 @@ function () {
     enumerable: false,
     configurable: true
   });
+
+  User.prototype.set = function (update) {
+    this.attributes.set(update);
+    this.events.trigger('change');
+  };
+
+  User.prototype.fetch = function () {
+    var _this = this;
+
+    var id = this.attributes.get('id');
+    if (typeof id !== 'number') throw new Error("Cannot fetch without an id");
+    this.sync.fetch(id).then(function (res) {
+      _this.set(res.data);
+    });
+  };
+
   return User;
 }();
 
@@ -2378,14 +2394,12 @@ Object.defineProperty(exports, "__esModule", {
 var User_1 = require("./models/User");
 
 var user = new User_1.User({
-  name: "New Record",
-  age: 0
+  id: 1
 });
-console.log(user.get('name'));
 user.on('change', function () {
-  console.log('user was changed');
+  console.log(user);
 });
-user.trigger('change'); // A quick reminder on accessors
+user.fetch(); // A quick reminder on accessors
 // class Person {
 //   constructor(public firstName: string, public lastName: string) {}
 //   get fullName(): string {
@@ -2432,7 +2446,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51874" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52838" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
