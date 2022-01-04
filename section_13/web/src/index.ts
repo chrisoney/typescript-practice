@@ -2,9 +2,15 @@ import { User } from "./models/User";
 
 const user = new User({ name: "New Record", age: 0 });
 
-user.save();
-user.events.on('change', () => {
-  console.log('test')
-});
+// A quick reminder on accessors
 
-user.events.trigger('change');
+// class Person {
+//   constructor(public firstName: string, public lastName: string) {}
+
+//   get fullName(): string {
+//     return `${this.firstName} ${this.lastName}`
+//   }
+// }
+
+// const person = new Person('chris', 'oney');
+// console.log(person.fullName)
