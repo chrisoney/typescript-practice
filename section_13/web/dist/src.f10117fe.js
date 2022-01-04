@@ -2314,6 +2314,10 @@ function () {
     Object.assign(this.data, update);
   };
 
+  Attributes.prototype.getAll = function () {
+    return this.data;
+  };
+
   return Attributes;
 }();
 
@@ -2380,6 +2384,16 @@ function () {
     });
   };
 
+  User.prototype.save = function () {
+    var _this = this;
+
+    this.sync.save(this.attributes.getAll()).then(function (res) {
+      _this.trigger('save');
+    }).catch(function () {
+      _this.trigger('error');
+    });
+  };
+
   return User;
 }();
 
@@ -2394,12 +2408,14 @@ Object.defineProperty(exports, "__esModule", {
 var User_1 = require("./models/User");
 
 var user = new User_1.User({
-  id: 1
+  id: 1,
+  name: 'Newer Name',
+  age: 0
 });
-user.on('change', function () {
+user.on('save', function () {
   console.log(user);
 });
-user.fetch(); // A quick reminder on accessors
+user.save(); // A quick reminder on accessors
 // class Person {
 //   constructor(public firstName: string, public lastName: string) {}
 //   get fullName(): string {
@@ -2446,7 +2462,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52838" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57805" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
