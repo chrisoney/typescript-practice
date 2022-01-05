@@ -31,17 +31,24 @@ export class Model<T extends HasId> {
     private events: Events,
   ) {};
 
-  get on() {
-    return this.events.on;
-   }
+  // longer syntax for passthrough methods. Could use previously.
+  // get on() {
+  //   return this.events.on;
+  //  }
+  // shorter syntax for passthrough methods. Could not use previously, as we need the modifier shortened syntax in the constructor so that those lines will run before the line below. Otherwise it would run before this.events or something similar was initialized
+  on = this.events.on;
 
-  get trigger() {
-    return this.events.trigger;
-  }
+  // get trigger() {
+  //   return this.events.trigger;
+  // }
 
-  get get() {
-    return this.attributes.get;
-  }
+  trigger = this.events.trigger;
+
+  // get get() {
+  //   return this.attributes.get;
+  // }
+
+  get = this.attributes.get;
 
   set(update: T): void {
     this.attributes.set(update);
