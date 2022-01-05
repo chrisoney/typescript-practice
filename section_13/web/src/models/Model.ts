@@ -36,6 +36,7 @@ export class Model<T extends HasId> {
   //   return this.events.on;
   //  }
   // shorter syntax for passthrough methods. Could not use previously, as we need the modifier shortened syntax in the constructor so that those lines will run before the line below. Otherwise it would run before this.events or something similar was initialized
+  // This shortened syntax may be considered brittle
   on = this.events.on;
 
   // get trigger() {
