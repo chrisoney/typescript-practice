@@ -14,6 +14,7 @@ export class UserForm {
     const templateElement = document.createElement('template');
     templateElement.innerHTML = this.template();
 
-    this.parent.append(templateElement.content);
+    console.log(this.parent)
+    this.parent.append(templateElement.content)
   }
 }

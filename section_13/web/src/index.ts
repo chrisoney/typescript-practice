@@ -1,14 +1,22 @@
 import axios, { AxiosResponse } from 'axios';
 import { Collection } from './models/Collection';
 import { User, UserProps } from './models/User';
+import { UserForm } from './views/UserForm';
 
-const collection = User.buildUserCollection();
 
-collection.on('change', () => {
-  console.log(collection)
-})
+const userForm = new UserForm(document.getElementById('root'));
+console.log(document.getElementById('root'))
 
-collection.fetch()
+userForm.render();
+
+// const collection = User.buildUserCollection();
+
+// collection.on('change', () => {
+//   console.log(collection)
+// })
+
+// collection.fetch()
+
 
 // A quick reminder on accessors
 
