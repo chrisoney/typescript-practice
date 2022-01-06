@@ -2511,8 +2511,11 @@ function (_super) {
     });
   };
 
-  User.prototype.isAdminUser = function () {
-    return this.get('id') === 1;
+  User.prototype.setRandomAge = function () {
+    var age = Math.round(Math.random() * 100);
+    this.set({
+      age: age
+    });
   };
 
   return User;
@@ -2531,18 +2534,20 @@ var UserForm =
 /** @class */
 function () {
   function UserForm(parent, model) {
+    var _this = this;
+
     this.parent = parent;
     this.model = model;
+
+    this.onSetAgeClick = function () {
+      _this.model.setRandomAge();
+    };
   }
 
   UserForm.prototype.eventsMap = function () {
     return {
       'click:.set-age': this.onSetAgeClick
     };
-  };
-
-  UserForm.prototype.onSetAgeClick = function () {
-    console.log('button was clicked');
   };
 
   UserForm.prototype.template = function () {
@@ -2646,7 +2651,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57954" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63434" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
