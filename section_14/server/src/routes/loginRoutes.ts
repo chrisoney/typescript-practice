@@ -26,11 +26,12 @@ router.get('/login', (req: Request, res: Response) => {
 
 router.post('/login', (req: RequestWithBody, res: Response) => {
   const { email, password } = req.body;
-
-  if (email) {
-    res.send(email.toUpperCase());
+  // first the typeguard, by checking the existence of the two attributes
+  if (email && password && email === 'chris@me.com' && password === 'hunter2') {
+    req.session = { loggedIn: true };
+    res.redirect('/')
   } else {
-    res.status(422).send('You must provide an email.')
+    res.send('Invalid email or password.')
   }
 
 })
