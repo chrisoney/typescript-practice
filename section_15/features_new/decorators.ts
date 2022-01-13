@@ -1,3 +1,5 @@
+// you can add a decorator to a class definition as well
+@classDecorator
 class Boat {
   @testDecorator
   color: string = 'red';
@@ -6,10 +8,25 @@ class Boat {
     return `This boat's color is ${this.color}`
   }
   @logError('Ah something bad happened')
-  pilot(): void {
-    throw new Error()
-    console.log('Swish');
+  pilot(
+    @parameterDecorator speed: string, 
+    @parameterDecorator generateWake: boolean
+  ): void {
+    if (speed === 'fast') {
+      console.log('Swish');
+    } else {
+      console.log('nothing')
+    }
+    // throw new Error()
   }
+}
+// only argument is the constructor function of that class. You can annotate it as a Function or as `typeof Boat`, which is a reference to the constructor funciton of that class
+function classDecorator(constructor: typeof Boat) {
+  console.log(constructor)
+}
+
+function parameterDecorator(target: any, key: string, index: number): void {
+  console.log(key, index);
 }
 
 function testDecorator(target: any, key: string): void {
