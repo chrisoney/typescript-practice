@@ -19,7 +19,7 @@ function logError(target: any, key: string, desc: PropertyDescriptor): void {
     try {
       method();
     } catch(e) {
-      console.log('Oops, boat sunk.')
+      console.log(`Oops, boat sunk.`)
     }
   }
 }
