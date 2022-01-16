@@ -73,3 +73,16 @@ router.get('/protected', requireAuth, (req: Request, res: Response) => {
 })
 
 export { router };
+
+
+function post(routeName: string) {
+  return function(target: any, key: string, desc: PropertyDescriptor) {
+    router.post(routeName, target[key]);
+  }
+}
+
+function use(middleware: any) {
+  return function(target: any, key: string, desc: PropertyDescriptor) {
+    router.use(middleware);
+  }
+}
