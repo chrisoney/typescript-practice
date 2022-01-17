@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.router = void 0;
-const express_1 = require("express");
+var express_1 = require("express");
 function requireAuth(req, res, next) {
     if (req.session && req.session.loggedIn) {
         next();
@@ -11,10 +11,10 @@ function requireAuth(req, res, next) {
         res.status(403).send('Not permitted');
     }
 }
-const router = (0, express_1.Router)();
+var router = (0, express_1.Router)();
 exports.router = router;
-router.post('/login', (req, res) => {
-    const { email, password } = req.body;
+router.post('/login', function (req, res) {
+    var _a = req.body, email = _a.email, password = _a.password;
     // first the typeguard, by checking the existence of the two attributes
     if (email && password && email === 'chris@me.com' && password === 'hunter2') {
         req.session = { loggedIn: true };
@@ -24,28 +24,18 @@ router.post('/login', (req, res) => {
         res.send('Invalid email or password.');
     }
 });
-router.get('/', (req, res) => {
+router.get('/', function (req, res) {
     if (req.session && req.session.loggedIn) {
-        res.send(`
-      <div>
-        <div>You are logged in</div>
-        <a href='/logout'>Logout</a>
-      </div>
-    `);
+        res.send("\n      <div>\n        <div>You are logged in</div>\n        <a href='/logout'>Logout</a>\n      </div>\n    ");
     }
     else {
-        res.send(`
-      <div>
-        <div>You are not logged in</div>
-        <a href='/login'>Log In</a>
-      </div>
-    `);
+        res.send("\n      <div>\n        <div>You are not logged in</div>\n        <a href='/login'>Log In</a>\n      </div>\n    ");
     }
 });
-router.get('/logout', (req, res) => {
+router.get('/logout', function (req, res) {
     req.session = undefined;
     res.redirect('/');
 });
-router.get('/protected', requireAuth, (req, res) => {
+router.get('/protected', requireAuth, function (req, res) {
     res.send('Welcome to the protected route, logged in user.');
 });
