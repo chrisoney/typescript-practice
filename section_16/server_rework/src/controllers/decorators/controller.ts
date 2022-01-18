@@ -10,13 +10,14 @@ function bodyValidators(keys: string[]): RequestHandler {
       res.status(422).send('Invalid request.');
       return;
     }
-    
+
     for (let key of keys) {
       if (!req.body[key]) {
-        res.status(422).send('Invalid request.');
+        res.status(422).send(`Invalid request. Missing property ${key}.`);
         return;
       }
     }
+    next()
   }
 }
 
@@ -39,10 +40,16 @@ export function controller(routePrefix: string) {
         key
       ) || [];
 
-      const keys = Reflect.getMetadata();
+      const requiredBodyProps = Reflect.getMetadata(
+        MetadataKeys.validator,
+        target.prototype,
+        key
+      ) || [];
+
+      const validator = bodyValidators(requiredBodyProps);
       
       if (path) {
-        router[method](`${routePrefix}${path}`, middlewares, routeHandler);
+        router[method](`${routePrefix}${path}`, middlewares, validator, routeHandler);
       }
     }
   }
